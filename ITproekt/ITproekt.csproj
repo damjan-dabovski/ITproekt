@@ -183,12 +183,17 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Data\BlogContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202007151659397_Initial.cs" />
     <Compile Include="Migrations\202007151659397_Initial.Designer.cs">
       <DependentUpon>202007151659397_Initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007151831063_AddContextAndProduct.cs" />
+    <Compile Include="Migrations\202007151831063_AddContextAndProduct.Designer.cs">
+      <DependentUpon>202007151831063_AddContextAndProduct.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -276,6 +281,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202007151659397_Initial.resx">
       <DependentUpon>202007151659397_Initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007151831063_AddContextAndProduct.resx">
+      <DependentUpon>202007151831063_AddContextAndProduct.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

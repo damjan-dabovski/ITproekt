@@ -109,3 +109,6 @@ C:\Users\PC\source\repos\ITproekt\ITproekt\ITproekt\obj\Debug\ITproekt.csproj.Co
 C:\Users\PC\source\repos\ITproekt\ITproekt\ITproekt\obj\Debug\ITproekt.csproj.CopyComplete
 C:\Users\PC\source\repos\ITproekt\ITproekt\ITproekt\obj\Debug\ITproekt.dll
 C:\Users\PC\source\repos\ITproekt\ITproekt\ITproekt\obj\Debug\ITproekt.pdb
+C:\Users\PC\source\repos\ITproekt\ITproekt\ITproekt\obj\Debug\ITproekt.Migrations.Initial.resources
+C:\Users\PC\source\repos\ITproekt\ITproekt\ITproekt\obj\Debug\ITproekt.csproj.GenerateResource.cache
+C:\Users\PC\source\repos\ITproekt\ITproekt\ITproekt\obj\Debug\ITproekt.Migrations.AddContextAndProduct.resources
