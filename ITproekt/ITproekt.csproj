@@ -195,6 +195,10 @@
     <Compile Include="Migrations\202007151831063_AddContextAndProduct.Designer.cs">
       <DependentUpon>202007151831063_AddContextAndProduct.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007161143363_CapitalizedModelsIdProperty.cs" />
+    <Compile Include="Migrations\202007161143363_CapitalizedModelsIdProperty.Designer.cs">
+      <DependentUpon>202007161143363_CapitalizedModelsIdProperty.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -284,6 +288,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007151831063_AddContextAndProduct.resx">
       <DependentUpon>202007151831063_AddContextAndProduct.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007161143363_CapitalizedModelsIdProperty.resx">
+      <DependentUpon>202007161143363_CapitalizedModelsIdProperty.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
