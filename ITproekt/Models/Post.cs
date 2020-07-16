@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,6 +8,7 @@ namespace ITproekt.Models {
     public class Post {
         public int ID { get; set; }
         public string Title { get; set; }
+        [DataType(DataType.MultilineText)]
         public string Content { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
@@ -14,6 +16,7 @@ namespace ITproekt.Models {
 
         public Post() {
             DateModified = DateCreated = DateTime.UtcNow;
+            Comments = new List<Comment>();
         }
 
         public Post Update(Post newVersion) {
