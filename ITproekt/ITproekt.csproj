@@ -199,6 +199,10 @@
     <Compile Include="Migrations\202007161143363_CapitalizedModelsIdProperty.Designer.cs">
       <DependentUpon>202007161143363_CapitalizedModelsIdProperty.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007161155189_BlogContextMigration.cs" />
+    <Compile Include="Migrations\202007161155189_BlogContextMigration.Designer.cs">
+      <DependentUpon>202007161155189_BlogContextMigration.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -291,6 +295,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007161143363_CapitalizedModelsIdProperty.resx">
       <DependentUpon>202007161143363_CapitalizedModelsIdProperty.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007161155189_BlogContextMigration.resx">
+      <DependentUpon>202007161155189_BlogContextMigration.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
