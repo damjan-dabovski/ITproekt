@@ -114,3 +114,4 @@ C:\Users\PC\source\repos\ITproekt\ITproekt\ITproekt\obj\Debug\ITproekt.csproj.Ge
 C:\Users\PC\source\repos\ITproekt\ITproekt\ITproekt\obj\Debug\ITproekt.Migrations.AddContextAndProduct.resources
 C:\Users\PC\source\repos\ITproekt\ITproekt\ITproekt\obj\Debug\ITproekt.Migrations.CapitalizedModelsIdProperty.resources
 C:\Users\PC\source\repos\ITproekt\ITproekt\ITproekt\obj\Debug\ITproekt.Migrations.BlogContextMigration.resources
+C:\Users\PC\source\repos\ITproekt\ITproekt\ITproekt\obj\Debug\ITproekt.Migrations.RemovedBlogContextAddedDbSetsToDefaultContext.resources

@@ -183,7 +183,6 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Data\BlogContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -202,6 +201,10 @@
     <Compile Include="Migrations\202007161155189_BlogContextMigration.cs" />
     <Compile Include="Migrations\202007161155189_BlogContextMigration.Designer.cs">
       <DependentUpon>202007161155189_BlogContextMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007161228522_RemovedBlogContextAddedDbSetsToDefaultContext.cs" />
+    <Compile Include="Migrations\202007161228522_RemovedBlogContextAddedDbSetsToDefaultContext.Designer.cs">
+      <DependentUpon>202007161228522_RemovedBlogContextAddedDbSetsToDefaultContext.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -272,6 +275,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Data\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -298,6 +302,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007161155189_BlogContextMigration.resx">
       <DependentUpon>202007161155189_BlogContextMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007161228522_RemovedBlogContextAddedDbSetsToDefaultContext.resx">
+      <DependentUpon>202007161228522_RemovedBlogContextAddedDbSetsToDefaultContext.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
