@@ -9,5 +9,9 @@ namespace ITproekt.Models {
         public string Content { get; set; }
         public DateTime DateCreated { get; set; }
         public int PostID { get; set; }
+
+        public Comment() {
+            DateCreated = DateTime.UtcNow;
+        }
     }
 }

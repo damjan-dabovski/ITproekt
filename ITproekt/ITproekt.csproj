@@ -181,6 +181,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\PostsController.cs" />
@@ -208,6 +209,10 @@
     <Compile Include="Migrations\202007161228522_RemovedBlogContextAddedDbSetsToDefaultContext.cs" />
     <Compile Include="Migrations\202007161228522_RemovedBlogContextAddedDbSetsToDefaultContext.Designer.cs">
       <DependentUpon>202007161228522_RemovedBlogContextAddedDbSetsToDefaultContext.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202007161909463_UpdatedPostAndCommentModels.cs" />
+    <Compile Include="Migrations\202007161909463_UpdatedPostAndCommentModels.Designer.cs">
+      <DependentUpon>202007161909463_UpdatedPostAndCommentModels.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -290,6 +295,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Data\" />
+    <Folder Include="Views\Comments\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -319,6 +325,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007161228522_RemovedBlogContextAddedDbSetsToDefaultContext.resx">
       <DependentUpon>202007161228522_RemovedBlogContextAddedDbSetsToDefaultContext.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007161909463_UpdatedPostAndCommentModels.resx">
+      <DependentUpon>202007161909463_UpdatedPostAndCommentModels.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

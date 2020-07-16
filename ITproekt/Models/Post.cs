@@ -12,7 +12,7 @@ namespace ITproekt.Models {
         public string Content { get; set; }
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
-        public IEnumerable<Comment> Comments { get; set; }
+        public List<Comment> Comments { get; set; }
 
         public Post() {
             DateModified = DateCreated = DateTime.UtcNow;

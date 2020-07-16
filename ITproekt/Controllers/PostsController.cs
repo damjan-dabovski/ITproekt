@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ITproekt.Models;
+using Microsoft.AspNet.Identity;
 
 namespace ITproekt.Controllers
 {
@@ -42,8 +43,6 @@ namespace ITproekt.Controllers
         }
 
         // POST: Posts/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Title,Content,DateCreated,DateModified")] Post post)
@@ -74,8 +73,6 @@ namespace ITproekt.Controllers
         }
 
         // POST: Posts/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Title,Content,DateCreated,DateModified")] Post post)
@@ -87,6 +84,28 @@ namespace ITproekt.Controllers
                 return RedirectToAction("Index");
             }
             return View(post);
+        }
+
+        //POST: Posts/Details/5/AddComment/
+        [Route("Posts/Details/{postId}/AddComment")]
+        [HttpPost]
+        //[ValidateAntiForgeryToken]
+        public ActionResult AddComment(int? postId, [Bind(Include = "Content")] Comment comment) {
+            if (postId == null) {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            if (comment != null) {
+                var currentPost = db.Posts.FirstOrDefault(post => post.ID == postId);
+                if (currentPost == null) {
+                    return HttpNotFound();
+                }
+                var currentUserId = User.Identity.GetUserId();
+                var commentToAdd = new Comment() { AuthorName = "", Content = comment.Content, PostID = postId.Value };
+                currentPost.Comments.Add(commentToAdd);
+                db.Entry(currentPost).State = EntityState.Modified;
+                db.SaveChanges();
+            }
+            return RedirectToAction("Details", new { id = postId });
         }
 
         // GET: Posts/Delete/5
