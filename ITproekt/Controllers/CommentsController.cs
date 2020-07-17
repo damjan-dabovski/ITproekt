@@ -12,27 +12,22 @@ namespace ITproekt.Controllers
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Comments/Create
-        public ActionResult Create()
-        {
-            //TODO
-            return HttpNotFound();
-        }
-
         // POST: Comments/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create([Bind(Include = "Content")] Comment comment, int postId)
         {
-            try
-            {
-                // TODO: Add insert logic here
-
-                return HttpNotFound();
+            var commentToAdd = new Comment() { AuthorName = "TEMP", Content = comment.Content, PostID = postId };
+            var targetPost = db.Posts.FirstOrDefault(post => post.ID == postId);
+            if (targetPost != null) {
+                targetPost.Comments.Add(commentToAdd);
+                db.Entry(targetPost).State = EntityState.Modified;
+                db.SaveChanges();
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToRoute(new {
+                controller = "Posts",
+                action = "Details",
+                id = postId
+            });
         }
 
         // POST: Comments/Edit/5

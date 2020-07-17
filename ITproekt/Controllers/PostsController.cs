@@ -86,28 +86,6 @@ namespace ITproekt.Controllers
             return View(post);
         }
 
-        //POST: Posts/Details/5/AddComment/
-        [Route("Posts/Details/{postId}/AddComment")]
-        [HttpPost]
-        //[ValidateAntiForgeryToken]
-        public ActionResult AddComment(int? postId, [Bind(Include = "Content")] Comment comment) {
-            if (postId == null) {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            if (comment != null) {
-                var currentPost = db.Posts.FirstOrDefault(post => post.ID == postId);
-                if (currentPost == null) {
-                    return HttpNotFound();
-                }
-                var currentUserId = User.Identity.GetUserId();
-                var commentToAdd = new Comment() { AuthorName = "", Content = comment.Content, PostID = postId.Value };
-                currentPost.Comments.Add(commentToAdd);
-                db.Entry(currentPost).State = EntityState.Modified;
-                db.SaveChanges();
-            }
-            return RedirectToAction("Details", new { id = postId });
-        }
-
         // GET: Posts/Delete/5
         public ActionResult Delete(int? id)
         {
