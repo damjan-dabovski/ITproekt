@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using ITproekt.Helpers;
 using ITproekt.Models;
 using Microsoft.AspNet.Identity;
 
@@ -37,6 +38,8 @@ namespace ITproekt.Controllers
         }
 
         // GET: Posts/Create
+        [HttpGet]
+        [Authorize(Roles = Roles.ADMIN)]
         public ActionResult Create()
         {
             return View();
@@ -44,6 +47,7 @@ namespace ITproekt.Controllers
 
         // POST: Posts/Create
         [HttpPost]
+        [Authorize(Roles = Roles.ADMIN)]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Title,Content,DateCreated,DateModified")] Post post)
         {
@@ -58,6 +62,8 @@ namespace ITproekt.Controllers
         }
 
         // GET: Posts/Edit/5
+        [HttpGet]
+        [Authorize(Roles = Roles.ADMIN)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -74,6 +80,7 @@ namespace ITproekt.Controllers
 
         // POST: Posts/Edit/5
         [HttpPost]
+        [Authorize(Roles = Roles.ADMIN)]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Title,Content,DateCreated,DateModified")] Post post)
         {
@@ -87,6 +94,7 @@ namespace ITproekt.Controllers
         }
 
         // GET: Posts/Delete/5
+        [Authorize(Roles = Roles.ADMIN)]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -103,6 +111,7 @@ namespace ITproekt.Controllers
 
         // POST: Posts/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = Roles.ADMIN)]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

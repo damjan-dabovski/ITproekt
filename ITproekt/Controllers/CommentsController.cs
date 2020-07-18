@@ -14,6 +14,7 @@ namespace ITproekt.Controllers
 
         // POST: Comments/Create
         [HttpPost]
+        [Authorize]
         public ActionResult Create([Bind(Include = "Content")] Comment comment, int postId)
         {
             var commentToAdd = new Comment() { AuthorName = "TEMP", Content = comment.Content, PostID = postId };
@@ -32,6 +33,7 @@ namespace ITproekt.Controllers
 
         // POST: Comments/Edit/5
         [HttpPost]
+        [Authorize]
         public ActionResult Edit(int id, string newContent)
         {
             var currentComment = db.Comments.FirstOrDefault(comment => comment.ID == id);
@@ -54,6 +56,7 @@ namespace ITproekt.Controllers
 
         // POST: Comments/Delete/5
         [HttpPost]
+        [Authorize]
         public ActionResult Delete(int id)
         {
             var currentComment = db.Comments.FirstOrDefault(comment => comment.ID == id);

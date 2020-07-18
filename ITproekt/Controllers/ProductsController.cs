@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using ITproekt.Helpers;
 using ITproekt.Models;
 
 namespace ITproekt.Controllers
@@ -36,15 +37,16 @@ namespace ITproekt.Controllers
         }
 
         // GET: Products/Create
+        [HttpGet]
+        [Authorize(Roles = Roles.ADMIN)]
         public ActionResult Create()
         {
             return View();
         }
 
         // POST: Products/Create
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = Roles.ADMIN)]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Name,Description,Price")] Product product)
         {
@@ -59,6 +61,8 @@ namespace ITproekt.Controllers
         }
 
         // GET: Products/Edit/5
+        [HttpGet]
+        [Authorize(Roles = Roles.ADMIN)]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -74,9 +78,8 @@ namespace ITproekt.Controllers
         }
 
         // POST: Products/Edit/5
-        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
-        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
+        [Authorize(Roles = Roles.ADMIN)]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ID,Name,Description,Price")] Product product)
         {
@@ -90,6 +93,7 @@ namespace ITproekt.Controllers
         }
 
         // GET: Products/Delete/5
+        [Authorize(Roles = Roles.ADMIN)]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -106,6 +110,7 @@ namespace ITproekt.Controllers
 
         // POST: Products/Delete/5
         [HttpPost, ActionName("Delete")]
+        [Authorize(Roles = Roles.ADMIN)]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {

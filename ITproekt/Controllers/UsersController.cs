@@ -1,4 +1,5 @@
-﻿using ITproekt.Models;
+﻿using ITproekt.Helpers;
+using ITproekt.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,8 @@ namespace ITproekt.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Users
+        [HttpGet]
+        [Authorize(Roles = Roles.ADMIN)]
         public ActionResult Index()
         {
             return View(db.Users.ToList());
