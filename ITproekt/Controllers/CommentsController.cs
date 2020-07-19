@@ -1,4 +1,5 @@
 ﻿using ITproekt.Models;
+using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
@@ -15,9 +16,10 @@ namespace ITproekt.Controllers
         // POST: Comments/Create
         [HttpPost]
         [Authorize]
-        public ActionResult Create([Bind(Include = "Content")] Comment comment, int postId)
+        public ActionResult Create([Bind(Include = "Content, AuthorName")] Comment comment, int postId)
         {
-            var commentToAdd = new Comment() { AuthorName = "TEMP", Content = comment.Content, PostID = postId };
+            var currentUserId = User.Identity.GetUserId();
+            var commentToAdd = new Comment() { AuthorName = comment.AuthorName, Content = comment.Content, PostID = postId };
             var targetPost = db.Posts.FirstOrDefault(post => post.ID == postId);
             if (targetPost != null) {
                 targetPost.Comments.Add(commentToAdd);

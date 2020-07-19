@@ -79,7 +79,7 @@ namespace ITproekt.Controllers.Api
                 return BadRequest(ModelState);
             }
 
-            var commentToAdd = new Comment() { AuthorName = "TEMP", Content = model.Comment.Content, PostID = model.PostId };
+            var commentToAdd = new Comment() { AuthorName = model.AuthorName, Content = model.Comment.Content, PostID = model.PostId };
             var targetPost = db.Posts.FirstOrDefault(post => post.ID == model.PostId);
             if (targetPost != null) {
                 targetPost.Comments.Add(commentToAdd);

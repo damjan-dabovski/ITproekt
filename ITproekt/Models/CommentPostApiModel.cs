@@ -7,5 +7,6 @@ namespace ITproekt.Models {
     public class CommentPostApiModel {
         public Comment Comment { get; set; }
         public int PostId { get; set; }
+        public string AuthorName { get; set; }
     }
 }
