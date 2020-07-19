@@ -6,12 +6,16 @@ using System.Web;
 
 namespace ITproekt.Models {
     public class Post {
+
         public int ID { get; set; }
         public string Title { get; set; }
+
         [DataType(DataType.MultilineText)]
         public string Content { get; set; }
+
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
+
         public List<Comment> Comments { get; set; }
 
         public Post() {
@@ -19,11 +23,10 @@ namespace ITproekt.Models {
             Comments = new List<Comment>();
         }
 
-        public Post Update(Post newVersion) {
+        public void Update(Post newVersion) {
             Title = newVersion.Title;
             Content = newVersion.Content;
             DateModified = DateTime.UtcNow;
-            return this;
         }
     }
 }

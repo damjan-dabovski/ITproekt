@@ -19,7 +19,10 @@ namespace ITproekt.Controllers
         // GET: Posts
         public ActionResult Index()
         {
-            return View(db.Posts.ToList());
+            var posts = db.Posts
+                .Include(post => post.Comments)
+                .ToList();
+            return View(posts);
         }
 
         // GET: Posts/Details/5
@@ -29,12 +32,15 @@ namespace ITproekt.Controllers
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Post post = db.Posts.Find(id);
-            if (post == null)
+            Post postToReturn = db.Posts
+                .Where(post => post.ID == id)
+                .Include(post => post.Comments)
+                .FirstOrDefault();
+            if (postToReturn == null)
             {
                 return HttpNotFound();
             }
-            return View(post);
+            return View(postToReturn);
         }
 
         // GET: Posts/Create
@@ -80,17 +86,26 @@ namespace ITproekt.Controllers
 
         // POST: Posts/Edit/5
         [HttpPost]
-        [Authorize(Roles = Roles.ADMIN)]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Title,Content,DateCreated,DateModified")] Post post)
+        //[Authorize(Roles = Roles.ADMIN)]
+        //[ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Title,Content")] Post post, int id)
         {
+            var postToUpdate = db.Posts
+                .Where(p => p.ID == id)
+                .Include(p => p.Comments)
+                .FirstOrDefault();
+
+            if (postToUpdate != null) {
+                postToUpdate.Update(post);
+            }
+
             if (ModelState.IsValid)
             {
-                db.Entry(post).State = EntityState.Modified;
+                db.Entry(postToUpdate).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Details", new { id = postToUpdate.ID });
             }
-            return View(post);
+            return View(postToUpdate);
         }
 
         // GET: Posts/Delete/5

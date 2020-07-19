@@ -8,6 +8,7 @@ namespace ITproekt.Models {
         [DataType(DataType.MultilineText)]
         public string Content { get; set; }
         public DateTime DateCreated { get; set; }
+
         public int PostID { get; set; }
 
         public Comment() {

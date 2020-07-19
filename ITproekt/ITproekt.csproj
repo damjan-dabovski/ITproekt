@@ -181,6 +181,9 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\Api\CommentsApiController.cs" />
+    <Compile Include="Controllers\Api\PostsApiController.cs" />
+    <Compile Include="Controllers\Api\ProductsApiController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -215,9 +218,14 @@
     <Compile Include="Migrations\202007161909463_UpdatedPostAndCommentModels.Designer.cs">
       <DependentUpon>202007161909463_UpdatedPostAndCommentModels.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007181730103_AddingPostReferenceToCommentModel.cs" />
+    <Compile Include="Migrations\202007181730103_AddingPostReferenceToCommentModel.Designer.cs">
+      <DependentUpon>202007181730103_AddingPostReferenceToCommentModel.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Comment.cs" />
+    <Compile Include="Models\CommentPostApiModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Post.cs" />
@@ -329,6 +337,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007161909463_UpdatedPostAndCommentModels.resx">
       <DependentUpon>202007161909463_UpdatedPostAndCommentModels.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007181730103_AddingPostReferenceToCommentModel.resx">
+      <DependentUpon>202007181730103_AddingPostReferenceToCommentModel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
