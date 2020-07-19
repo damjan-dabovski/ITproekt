@@ -43,6 +43,18 @@
         </dd>
 
     </dl>
+
+    @foreach (var comment in Model.Comments) {
+        <h4>@comment.AuthorName</h4>
+        <p class="text-muted">@comment.DateCreated</p>
+        <p>@comment.Content</p>
+    }
+
+    @using (Html.BeginForm("Create", "Comments", "POST")) {
+        @Html.TextArea("Content", "", new { rows = "7", cols = "40", placeholder = "Type your comment here" })
+        @Html.Hidden("postId", Model.ID)
+        <input type="submit" value="Submit" />
+    }
 </div>
 <p>
     @Html.ActionLink("Edit", "Edit", new { id = Model.ID }) |
