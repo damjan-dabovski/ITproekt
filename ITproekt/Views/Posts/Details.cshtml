@@ -50,9 +50,12 @@
         <h4>@comment.AuthorName</h4>
         <p class="text-muted">@comment.DateCreated</p>
         <p>@comment.Content</p>
-        if (User.Identity.Name == comment.AuthorName) {
-            <a href="#" >Edit | </a> 
-            <a href="#">Delete</a>
+        if (User.Identity.Name == comment.AuthorName || User.IsInRole("Admin")) {
+            @Html.ActionLink("Edit", "Edit", "Comments", new { id = comment.ID }, new { @class = "btn btn-primary" })
+            using (Html.BeginForm("Delete", "Comments", new { id = comment.ID }, FormMethod.Post)) {
+                @Html.Hidden("authorName", User.Identity.Name)
+                <input type="submit" class="btn btn-danger" value="Delete" />
+            }
         }
     }
 

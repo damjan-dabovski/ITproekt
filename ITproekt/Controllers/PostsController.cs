@@ -86,8 +86,8 @@ namespace ITproekt.Controllers
 
         // POST: Posts/Edit/5
         [HttpPost]
-        //[Authorize(Roles = Roles.ADMIN)]
-        //[ValidateAntiForgeryToken]
+        [Authorize(Roles = Roles.ADMIN)]
+        [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Title,Content")] Post post, int id)
         {
             var postToUpdate = db.Posts
