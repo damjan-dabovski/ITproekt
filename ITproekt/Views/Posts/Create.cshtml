@@ -7,10 +7,9 @@
 <h2>Create</h2>
 
 
-@using (Html.BeginForm()) 
-{
+@using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Post</h4>
         <hr />
@@ -37,6 +36,12 @@
             </div>
         </div>
     </div>
+}
+
+@using (Html.BeginForm("Preview", "Posts", FormMethod.Post, new { target = "_blank" })) {
+    @Html.HiddenFor(model => model.Title)
+    @Html.HiddenFor(model => model.Content)
+    <input type="submit" class="btn btn-warning" value="Preview" />
 }
 
 <div>

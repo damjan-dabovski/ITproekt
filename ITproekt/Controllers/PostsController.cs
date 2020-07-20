@@ -88,7 +88,7 @@ namespace ITproekt.Controllers
         [HttpPost]
         [Authorize(Roles = Roles.ADMIN)]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Title,Content")] Post post, int id)
+        public ActionResult Edit([Bind(Include = "Title, Content")] Post post, int id)
         {
             var postToUpdate = db.Posts
                 .Where(p => p.ID == id)
@@ -106,6 +106,13 @@ namespace ITproekt.Controllers
                 return RedirectToAction("Details", new { id = postToUpdate.ID });
             }
             return View(postToUpdate);
+        }
+
+        //POST: Posts/Preview
+        [HttpPost]
+        [Authorize(Roles = Roles.ADMIN)]
+        public ActionResult Preview([Bind(Include = "Title, Content")] Post post) {
+            return View(post);
         }
 
         // GET: Posts/Delete/5
