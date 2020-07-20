@@ -17,11 +17,16 @@ namespace ITproekt.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Posts
-        public ActionResult Index()
+        public ActionResult Index(string q)
         {
             var posts = db.Posts
                 .Include(post => post.Comments)
                 .ToList();
+
+            if (!String.IsNullOrEmpty(q)) {
+                posts = posts.Where(post => post.Title.ToLower().Contains(q.ToLower())).ToList();
+            }
+
             return View(posts);
         }
 
@@ -110,8 +115,10 @@ namespace ITproekt.Controllers
 
         //POST: Posts/Preview
         [HttpPost]
+        [ValidateInput(false)]
         [Authorize(Roles = Roles.ADMIN)]
-        public ActionResult Preview([Bind(Include = "Title, Content")] Post post) {
+        public ActionResult Preview(string titleValue, string contentValue) {
+            var post = new Post() { Title = titleValue, Content = contentValue };
             return View(post);
         }
 

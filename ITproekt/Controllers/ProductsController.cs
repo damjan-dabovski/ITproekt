@@ -16,9 +16,16 @@ namespace ITproekt.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Products
-        public ActionResult Index()
+        public ActionResult Index(string q)
         {
-            return View(db.Products.ToList());
+            var products = db.Products
+                .ToList();
+
+            if (!String.IsNullOrEmpty(q)) {
+                products = products.Where(prod => prod.Name.ToLower().Contains(q.ToLower())).ToList();
+            }
+
+            return View(products);
         }
 
         // GET: Products/Details/5
