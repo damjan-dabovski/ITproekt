@@ -222,6 +222,10 @@
     <Compile Include="Migrations\202007181730103_AddingPostReferenceToCommentModel.Designer.cs">
       <DependentUpon>202007181730103_AddingPostReferenceToCommentModel.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202007211550051_AddPostAuthorAndProductImage.cs" />
+    <Compile Include="Migrations\202007211550051_AddPostAuthorAndProductImage.Designer.cs">
+      <DependentUpon>202007211550051_AddPostAuthorAndProductImage.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Comment.cs" />
@@ -343,6 +347,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202007181730103_AddingPostReferenceToCommentModel.resx">
       <DependentUpon>202007181730103_AddingPostReferenceToCommentModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202007211550051_AddPostAuthorAndProductImage.resx">
+      <DependentUpon>202007211550051_AddPostAuthorAndProductImage.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

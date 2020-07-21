@@ -117,3 +117,4 @@ C:\Users\PC\source\repos\ITproekt\ITproekt\ITproekt\obj\Debug\ITproekt.Migration
 C:\Users\PC\source\repos\ITproekt\ITproekt\ITproekt\obj\Debug\ITproekt.Migrations.RemovedBlogContextAddedDbSetsToDefaultContext.resources
 C:\Users\PC\source\repos\ITproekt\ITproekt\ITproekt\obj\Debug\ITproekt.Migrations.UpdatedPostAndCommentModels.resources
 C:\Users\PC\source\repos\ITproekt\ITproekt\ITproekt\obj\Debug\ITproekt.Migrations.AddingPostReferenceToCommentModel.resources
+C:\Users\PC\source\repos\ITproekt\ITproekt\ITproekt\obj\Debug\ITproekt.Migrations.AddPostAuthorAndProductImage.resources
