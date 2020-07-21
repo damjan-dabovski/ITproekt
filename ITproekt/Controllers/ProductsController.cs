@@ -16,13 +16,23 @@ namespace ITproekt.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Products
-        public ActionResult Index(string q)
+        public ActionResult Index(string q, string category = "name")
         {
             var products = db.Products
                 .ToList();
 
             if (!String.IsNullOrEmpty(q)) {
-                products = products.Where(prod => prod.Name.ToLower().Contains(q.ToLower())).ToList();
+                switch (category.ToLower()) {
+                    case "name":
+                        products = products.Where(post => post.Name.ToLower().Contains(q.ToLower())).ToList();
+                        break;
+                    case "desc":
+                        products= products.Where(post => post.Description.ToLower().Contains(q.ToLower())).ToList();
+                        break;
+                    default:
+                        products= products.Where(post => post.Name.ToLower().Contains(q.ToLower())).ToList();
+                        break;
+                }
             }
 
             return View(products);

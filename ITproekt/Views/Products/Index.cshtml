@@ -6,6 +6,17 @@
 
 <h2>Index</h2>
 
+@using (Html.BeginForm("Index", "Products", FormMethod.Get)) {
+    @Html.TextBox("q", "", new { @class = "form-control" })
+    @Html.DropDownList("category", new SelectList(
+        new List<SelectListItem> {
+            new SelectListItem{ Selected = true, Text = "Name", Value = "name" },
+            new SelectListItem{ Selected = true, Text = "Description", Value = "desc" }
+        }
+    , "Value", "Text"))
+    <input type="submit" value="Search" />
+}
+
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
@@ -23,23 +34,23 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Price)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
 
 </table>

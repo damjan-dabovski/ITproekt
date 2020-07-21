@@ -17,14 +17,24 @@ namespace ITproekt.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Posts
-        public ActionResult Index(string q)
+        public ActionResult Index(string q, string category = "title")
         {
             var posts = db.Posts
                 .Include(post => post.Comments)
                 .ToList();
 
             if (!String.IsNullOrEmpty(q)) {
-                posts = posts.Where(post => post.Title.ToLower().Contains(q.ToLower())).ToList();
+                switch (category.ToLower()) {
+                    case "title":
+                        posts = posts.Where(post => post.Title.ToLower().Contains(q.ToLower())).ToList();
+                        break;
+                    case "content":
+                        posts = posts.Where(post => post.Content.ToLower().Contains(q.ToLower())).ToList();
+                        break;
+                    default:
+                        posts = posts.Where(post => post.Title.ToLower().Contains(q.ToLower())).ToList();
+                        break;
+                }
             }
 
             return View(posts);
