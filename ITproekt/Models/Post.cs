@@ -8,10 +8,14 @@ namespace ITproekt.Models {
     public class Post {
 
         public int ID { get; set; }
+        [Required]
+        [StringLength(200)]
         public string Title { get; set; }
 
         [DataType(DataType.MultilineText)]
         public string Content { get; set; }
+
+        public string AuthorName { get; set; }
 
         public DateTime DateCreated { get; set; }
         public DateTime DateModified { get; set; }
