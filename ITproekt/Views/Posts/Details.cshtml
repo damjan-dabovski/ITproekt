@@ -18,12 +18,17 @@
             @Html.DisplayFor(model => model.Title)
         </dd>
 
+        <dd>
+            @Html.DisplayFor(model => model.AuthorName)
+        </dd>
+
         <dt>
             @Html.DisplayNameFor(model => model.Content)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.Content)
+            @*@Html.DisplayFor(model => model.Content)*@
+            @Html.Raw(Model.Content)
         </dd>
 
         <dt>
