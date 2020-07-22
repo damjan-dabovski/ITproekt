@@ -21,7 +21,7 @@ namespace ITproekt.Controllers
             return View(model);
         }
 
-        // POST: ShoppingCart/Create
+        // POST: ShoppingCart/AddToCart
         [HttpPost]
         public ActionResult AddToCart(int productId)
         {
@@ -45,20 +45,21 @@ namespace ITproekt.Controllers
             return RedirectToAction("Index", "Products");
         }
 
-        // POST: ShoppingCart/Edit/5
+        // POST: ShoppingCart/SetQuantity
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult SetQuantity(int productId, int quantity)
         {
-            try
-            {
-                // TODO: Add update logic here
-
-                return RedirectToAction("Index");
+            var cartItems = Session["cart"] as List<CartItem>;
+            if (cartItems != null) {
+                var targetItem = cartItems.FirstOrDefault(item => item.Product.ID == productId);
+                if (targetItem != null) {
+                    targetItem.Quantity = quantity;
+                    if(targetItem.Quantity < 1) {
+                        cartItems.Remove(targetItem);
+                    }
+                }
             }
-            catch
-            {
-                return View();
-            }
+            return RedirectToAction("Index", "ShoppingCart");
         }
 
         // POST: ShoppingCart/Remove/5

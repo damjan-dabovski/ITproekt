@@ -19,24 +19,40 @@
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Product.Name)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Product.Price)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Quantity)
-        </td>
-        <td>
-            @using(Html.BeginForm("Remove", "ShoppingCart", FormMethod.Post)) {
-                @Html.Hidden("productId", item.Product.ID)
-                <input type="submit" value="Remove" />
-            }
-        </td>
-    </tr>
-}
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Price)
+            </td>
+            <td>
+                @using (Html.BeginForm("SetQuantity", "ShoppingCart", FormMethod.Post)) {
+                    <input type="number" value="@item.Quantity" name="quantity" />
+                    @Html.Hidden("productId", item.Product.ID)
+                    <input type="submit" value="Apply" />
+                }
+            </td>
+            <td>
+                @using (Html.BeginForm("Remove", "ShoppingCart", FormMethod.Post)) {
+                    @Html.Hidden("productId", item.Product.ID)
+                    <input type="submit" value="Remove" />
+                }
+            </td>
+        </tr>
+        <tr>
+            <td align="right" colspan="3">
+                @{
+                    decimal totalValue = 0;
+                    foreach (var i in Model) {
+                        totalValue += (item.Product.Price * item.Quantity);
+                    }
+
+                }
+                <b>Total: $@totalValue</b>
+            </td>
+        </tr>
+    }
 
 </table>
