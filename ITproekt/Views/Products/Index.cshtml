@@ -32,6 +32,7 @@
             @Html.DisplayNameFor(model => model.Price)
         </th>
         <th></th>
+        <th></th>
     </tr>
 
     @foreach (var item in Model) {
@@ -44,6 +45,12 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @using (Html.BeginForm("AddToCart", "ShoppingCart", FormMethod.Post)) {
+                    @Html.Hidden("productId", item.ID)
+                    <input type="submit" class="btn btn-success" value="Add to cart" />
+                }
             </td>
             <td>
                 @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
