@@ -1,5 +1,10 @@
-﻿@{
+﻿@model ITproekt.Models.HomepageViewModel
+@{
     ViewBag.Title = "Home Page";
 }
 
-@Html.Partial("_ProductsPartial")
+@Html.Partial("_ProductsPartial", Model.HotProducts)
+
+@foreach(var post in Model.NewestPosts) {
+    @Html.Partial("_PostListPartial", post)
+}

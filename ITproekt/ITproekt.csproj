@@ -232,6 +232,7 @@
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\CommentPostApiModel.cs" />
+    <Compile Include="Models\HomepageViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Post.cs" />
@@ -311,6 +312,7 @@
     <Content Include="Views\Comments\Edit.cshtml" />
     <Content Include="Views\Posts\Preview.cshtml" />
     <Content Include="Views\ShoppingCart\Index.cshtml" />
+    <Content Include="Views\Shared\_PostListPartial.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

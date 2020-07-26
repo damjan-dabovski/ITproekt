@@ -65,7 +65,7 @@ namespace ITproekt.Controllers
         [HttpPost]
         [Authorize(Roles = Roles.ADMIN)]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ID,Name,Description,Price")] Product product)
+        public ActionResult Create([Bind(Include = "ID,Name,Description,Price,ImageUrl")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -98,7 +98,7 @@ namespace ITproekt.Controllers
         [HttpPost]
         [Authorize(Roles = Roles.ADMIN)]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ID,Name,Description,Price")] Product product)
+        public ActionResult Edit([Bind(Include = "ID,Name,Description,Price,ImageUrl")] Product product)
         {
             if (ModelState.IsValid)
             {

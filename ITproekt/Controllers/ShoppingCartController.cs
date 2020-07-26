@@ -7,6 +7,7 @@ using System.Web.Mvc;
 
 namespace ITproekt.Controllers
 {
+    [Authorize]
     public class ShoppingCartController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -19,6 +20,12 @@ namespace ITproekt.Controllers
                 model = Session["cart"] as List<CartItem>;
             }
             return View(model);
+        }
+
+        //GET: ShoppingCart/AddToCart
+        [HttpGet]
+        public ActionResult AddToCart() {
+            return RedirectToAction("Index", "Products");
         }
 
         // POST: ShoppingCart/AddToCart

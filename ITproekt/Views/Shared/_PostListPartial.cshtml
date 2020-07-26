@@ -1,0 +1,11 @@
+﻿@model ITproekt.Models.Post
+
+<div style="padding-top: 2rem; border: 1px solid gray">
+    <h4>@Html.ActionLink(Model.Title,"Details", "Posts", routeValues: new { id = Model.ID }, htmlAttributes: null)</h4>
+    <hr />
+    <p>by @Model.AuthorName | at @Model.DateModified</p>
+    <p>@Model.Content</p>
+    <p>
+        @Html.ActionLink("Read more", "Details", "Posts", routeValues: new { id = Model.ID }, htmlAttributes: null)
+    </p>
+</div>
