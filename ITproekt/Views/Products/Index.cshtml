@@ -38,7 +38,7 @@
     @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.Name)
+                @Html.ActionLink(item.Name, "Details", new { id = item.ID })
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Description)
@@ -53,9 +53,10 @@
                 }
             </td>
             <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
-                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                @if (User.IsInRole(ITproekt.Helpers.Roles.ADMIN)) {
+                    @Html.ActionLink("Edit", "Edit", routeValues: new { id = item.ID}, htmlAttributes: new { @class = "btn btn-success"})
+                    @Html.ActionLink("Delete", "Delete", routeValues: new { id = item.ID}, htmlAttributes: new {@class = "btn btn-danger"})
+                }
             </td>
         </tr>
     }

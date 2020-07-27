@@ -17,6 +17,7 @@
             @Html.DisplayNameFor(model => model.Quantity)
         </th>
         <th></th>
+        <th></th>
     </tr>
 
     @foreach (var item in Model) {
@@ -35,24 +36,26 @@
                 }
             </td>
             <td>
+                <b>Subtotal: @(item.Product.Price*item.Quantity)</b>
+            </td>
+            <td>
                 @using (Html.BeginForm("Remove", "ShoppingCart", FormMethod.Post)) {
                     @Html.Hidden("productId", item.Product.ID)
                     <input type="submit" value="Remove" />
                 }
             </td>
         </tr>
-        <tr>
-            <td align="right" colspan="3">
-                @{
-                    decimal totalValue = 0;
-                    foreach (var i in Model) {
-                        totalValue += (item.Product.Price * item.Quantity);
-                    }
-
-                }
-                <b>Total: $@totalValue</b>
-            </td>
-        </tr>
     }
+    <tr>
+        <td align="right" colspan="4">
+            @{
+                decimal totalValue = 0;
+                foreach (var item in Model) {
+                    totalValue += (item.Product.Price * item.Quantity);
+                }
 
+            }
+            <b>Total: $@totalValue</b>
+        </td>
+    </tr>
 </table>

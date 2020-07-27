@@ -19,10 +19,10 @@
 
 <div id="hot-products-carousel" class="carousel">
     <ol class="carousel-indicators">
-        <li data-target="#hot-products-carousel" data-slide-to="0" class="active"></li>
-        <li data-target="#hot-products-carousel" data-slide-to="1"></li>
-        <li data-target="#hot-products-carousel" data-slide-to="2"></li>
-    </ol>
+        @for (int i = 0; i < Model.Count; i++) {
+            <li data-target="#hot-products-carousel" data-slide-to="@i" class="@(@i == 0 ? "active" : "")"></li>
+        }
+        </ol>
 
     <div class="carousel-inner">
 

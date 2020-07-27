@@ -1,7 +1,15 @@
 ﻿@model ITproekt.Models.Post
 
-<div style="padding-top: 2rem; border: 1px solid gray">
+<div style="padding-top: 2rem; border: 1px solid gray; position:relative">
+
     <h4>@Html.ActionLink(Model.Title,"Details", "Posts", routeValues: new { id = Model.ID }, htmlAttributes: null)</h4>
+
+    @if (User.IsInRole(ITproekt.Helpers.Roles.ADMIN)) {
+        <div style="position:absolute; right: 0%; top: 0%; padding: 2rem;">
+            @Html.ActionLink("Edit", "Edit", "Posts", routeValues: new { id = Model.ID }, htmlAttributes: new { @class = "btn btn-success" })
+            @Html.ActionLink("Delete", "Delete", "Posts", routeValues: new { id = Model.ID }, htmlAttributes: new { @class = "btn btn-danger" })
+        </div>
+    }
     <hr />
     <p>by @Model.AuthorName | at @Model.DateModified</p>
     <p>@Model.Content</p>

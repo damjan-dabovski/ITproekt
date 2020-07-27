@@ -19,8 +19,7 @@ namespace ITproekt.Controllers.Api
         // GET: api/PostsApi
         public IQueryable<Post> GetPosts()
         {
-            return db.Posts
-                .Include(post => post.Comments);
+            return db.Posts;
         }
 
         // GET: api/PostsApi/5
