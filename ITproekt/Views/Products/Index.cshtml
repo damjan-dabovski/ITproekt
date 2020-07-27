@@ -1,0 +1,64 @@
+﻿@model IEnumerable<ITproekt.Models.Product>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Index", "Products", FormMethod.Get)) {
+    @Html.TextBox("q", "", new { @class = "form-control" })
+    @Html.DropDownList("category", new SelectList(
+        new List<SelectListItem> {
+            new SelectListItem{ Selected = true, Text = "Name", Value = "name" },
+            new SelectListItem{ Selected = true, Text = "Description", Value = "desc" }
+        }
+    , "Value", "Text"))
+    <input type="submit" value="Search" />
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Price)
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.ActionLink(item.Name, "Details", new { id = item.ID })
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @using (Html.BeginForm("AddToCart", "ShoppingCart", FormMethod.Post)) {
+                    @Html.Hidden("productId", item.ID)
+                    <input type="submit" class="btn btn-success" value="Add to cart" />
+                }
+            </td>
+            <td>
+                @if (User.IsInRole(ITproekt.Helpers.Roles.ADMIN)) {
+                    @Html.ActionLink("Edit", "Edit", routeValues: new { id = item.ID}, htmlAttributes: new { @class = "btn btn-success"})
+                    @Html.ActionLink("Delete", "Delete", routeValues: new { id = item.ID}, htmlAttributes: new {@class = "btn btn-danger"})
+                }
+            </td>
+        </tr>
+    }
+
+</table>

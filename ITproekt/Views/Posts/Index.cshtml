@@ -1,0 +1,26 @@
+﻿@model IEnumerable<ITproekt.Models.Post>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@using (Html.BeginForm("Index", "Posts", FormMethod.Get)) {
+    @Html.TextBox("q", "", new { @class = "form-control" })
+    @Html.DropDownList("category", new SelectList(
+        new List<SelectListItem> {
+            new SelectListItem{ Selected = true, Text = "Title", Value = "title" },
+            new SelectListItem{ Selected = true, Text = "Content", Value = "content" }
+        }
+    , "Value", "Text"))
+    <input type="submit" value="Search" />
+}
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@foreach (var item in Model) {
+    @Html.Partial("_PostListPartial", item)
+}

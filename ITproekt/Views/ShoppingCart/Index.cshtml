@@ -1,0 +1,61 @@
+﻿@model IEnumerable<ITproekt.Models.CartItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>My Cart</h2>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Product.Price)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th></th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Product.Price)
+            </td>
+            <td>
+                @using (Html.BeginForm("SetQuantity", "ShoppingCart", FormMethod.Post)) {
+                    <input type="number" value="@item.Quantity" name="quantity" />
+                    @Html.Hidden("productId", item.Product.ID)
+                    <input type="submit" value="Apply" />
+                }
+            </td>
+            <td>
+                <b>Subtotal: @(item.Product.Price*item.Quantity)</b>
+            </td>
+            <td>
+                @using (Html.BeginForm("Remove", "ShoppingCart", FormMethod.Post)) {
+                    @Html.Hidden("productId", item.Product.ID)
+                    <input type="submit" value="Remove" />
+                }
+            </td>
+        </tr>
+    }
+    <tr>
+        <td align="right" colspan="4">
+            @{
+                decimal totalValue = 0;
+                foreach (var item in Model) {
+                    totalValue += (item.Product.Price * item.Quantity);
+                }
+
+            }
+            <b>Total: $@totalValue</b>
+        </td>
+    </tr>
+</table>
