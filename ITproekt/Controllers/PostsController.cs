@@ -69,6 +69,7 @@ namespace ITproekt.Controllers
         // POST: Posts/Create
         [HttpPost]
         [Authorize(Roles = Roles.ADMIN)]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ID,Title,Content,DateCreated,DateModified")] Post post)
         {
@@ -102,6 +103,7 @@ namespace ITproekt.Controllers
         // POST: Posts/Edit/5
         [HttpPost]
         [Authorize(Roles = Roles.ADMIN)]
+        [ValidateInput(false)]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Title, Content")] Post post, int id)
         {
